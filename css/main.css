@@ -27,11 +27,6 @@
 
 }
 
-
-
-
-
-
 /********************************************
  *
  *   Basic styles
@@ -273,8 +268,6 @@ body.indexVisible > div#contentwrapper {
 		line-height: 28px;
 	}
 }
-
-
 
 /********************************************
  *
@@ -1417,39 +1410,6 @@ body.indexVisible > div#index button#indexbutton {
 
 /********************************************
  *
- *   Your Browser: Share
- */
-
-.popupPanel.share {
-	width: 210px !important;
-	margin-top: 21px;
-}
-#share {
-	display: block;
-	height: 94px;
-	position: relative;
-	overflow: hidden;
-}
-#share #twitter {
-	position: absolute;
-	top: 15px;
-	left: 15px;
-}
-#share #facebook {
-	position: absolute;
-	top: 15px;
-	left: 82px;
-}
-#share #google {
-	position: absolute;
-	top: 15px;
-	left: 141px;
-}
-
-
-
-/********************************************
- *
  *   Your Browser: Action buttons
  */
 
@@ -2104,7 +2064,6 @@ body.indexVisible > div#index button#indexbutton {
 	}
 }
 
-
 /********************************************
  *
  *   Your Browser: Ads
@@ -2157,9 +2116,6 @@ body.indexVisible > div#index button#indexbutton {
 		margin-bottom: 30px;
 	}
 }
-
-
-
 
 .upgradeWarning {
 	background: #ec6534;

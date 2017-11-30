@@ -958,9 +958,9 @@ Test7 = (function() {
 				This bug was reported and fixed in iOS 4.2
 			*/
 
-			if (Browsers.isOs('iOS', '<', '4.2'))
-				return this.element.canPlayType(t) == 'probably' || this.element.canPlayType(t) == 'maybe';
-			else
+			// if (Browsers.isOs('iOS', '<', '4.2'))
+			// 	return this.element.canPlayType(t) == 'probably' || this.element.canPlayType(t) == 'maybe';
+			// else
 				return this.element.canPlayType(t) == 'probably';
 		}
 	};
@@ -1121,9 +1121,9 @@ Test7 = (function() {
 				This bug was reported and fixed in iOS 4.2
 			*/
 
-			if (Browsers.isOs('iOS', '<', '4.2'))
-				return this.element.canPlayType(t) == 'probably' || this.element.canPlayType(t) == 'maybe';
-			else
+			// if (Browsers.isOs('iOS', '<', '4.2'))
+			// 	return this.element.canPlayType(t) == 'probably' || this.element.canPlayType(t) == 'maybe';
+			// else
 				return this.element.canPlayType(t) == 'probably';
 		}
 	};
@@ -3253,14 +3253,6 @@ Test7 = (function() {
 				}
 			}
 
-			try {
-				item.startBackground();
-				xhr.open("GET", "/detect.html?" + Math.random().toString(36).substr(2, 5));
-				xhr.responseType = "document";
-				xhr.send();
-			} catch (e) {
-				item.stopBackground();
-			}
 		},
 
 		testResponseTypeText: function(item) {
@@ -3289,14 +3281,6 @@ Test7 = (function() {
 				}
 			}
 
-			try {
-				item.startBackground();
-				xhr.open("GET", "/detect.html?" + Math.random().toString(36).substr(2, 5));
-				xhr.responseType = "text";
-				xhr.send();
-			} catch (e) {
-				item.stopBackground();
-			}
 		},
 
 		testResponseTypeBlob: function(item) {
@@ -3325,14 +3309,6 @@ Test7 = (function() {
 				}
 			}
 
-			try {
-				item.startBackground();
-				xhr.open("GET", "/detect.html?" + Math.random().toString(36).substr(2, 5));
-				xhr.responseType = "blob";
-				xhr.send();
-			} catch (e) {
-				item.stopBackground();
-			}
 		},
 
 		testResponseTypeArrayBuffer: function(item) {
@@ -3361,14 +3337,6 @@ Test7 = (function() {
 				}
 			}
 
-			try {
-				item.startBackground();
-				xhr.open("GET", "/detect.html?" + Math.random().toString(36).substr(2, 5));
-				xhr.responseType = "arraybuffer";
-				xhr.send();
-			} catch (e) {
-				item.stopBackground();
-			}
 		}
 	};
 
@@ -3934,82 +3902,6 @@ Test7 = (function() {
 		],
 
 		initialize: function(callback, error) {
-			blacklists = [
-				[
-					BLOCKED,
-					{
-						'form.file':						Browsers.isDevice('Xbox 360') || Browsers.isDevice('Xbox One') || Browsers.isDevice('Playstation 4') || Browsers.isOs('Windows Phone', '<', '8.1') || Browsers.isOs('iOS', '<', '6')  || Browsers.isOs('Android', '<', '2.2'),
-						'form.date.ui':						Browsers.isBrowser('Sogou Explorer') || Browsers.isBrowser('Maxthon', '<', '4.0.5') || Browsers.isBrowser('UC Browser', '<', '8.6'),
-						'form.month.ui':					Browsers.isBrowser('Sogou Explorer') || Browsers.isBrowser('Maxthon', '<', '4.0.5') || Browsers.isBrowser('UC Browser', '<', '8.6'),
-						'form.week.ui':						Browsers.isBrowser('Sogou Explorer') || Browsers.isBrowser('Maxthon', '<', '4.0.5') || Browsers.isBrowser('UC Browser', '<', '8.6'),
-						'form.time.ui':						Browsers.isBrowser('Sogou Explorer') || Browsers.isBrowser('Maxthon', '<', '4.0.5') || Browsers.isBrowser('UC Browser', '<', '8.6'),
-						'form.datetime-local.ui':			Browsers.isBrowser('Sogou Explorer') || Browsers.isBrowser('Maxthon', '<', '4.0.5') || Browsers.isBrowser('UC Browser', '<', '8.6'),
-						'form.color.ui':					Browsers.isBrowser('Sogou Explorer') || Browsers.isBrowser('UC Browser', '<', '9.8'),
-						'form.range.ui':					Browsers.isBrowser('UC Browser', '<', '9.8'),
-						'form.progress.element':			Browsers.isBrowser('Baidu Browser'),
-						'files.fileSystem':					Browsers.isOs('BlackBerry Tablet OS'),
-						'input.getUserMedia':				Browsers.isDevice('webOS TV') || Browsers.isBrowser('Baidu Browser') || Browsers.isBrowser('Sogou Explorer') || Browsers.isBrowser('UC Browser', '<', '9.8') || Browsers.isBrowser('Dolphin'),
-						'input.getGamepads':				Browsers.isDevice('webOS TV') || Browsers.isDevice('Playstation 4') || Browsers.isDevice('Wii U'),
-						'location.geolocation':				Browsers.isDevice('webOS TV') || Browsers.isDevice('Xbox One') || Browsers.isBrowser('Baidu Browser') || Browsers.isOs('Google TV'),
-						'location.orientation':				Browsers.isBrowser('Baidu Browser'),
-						'output.notifications':				Browsers.isBrowser('Opera', '=', '18') || Browsers.isBrowser('Baidu Browser') || Browsers.isBrowser('Sogou Explorer'),
-						'output.requestFullScreen':			Browsers.isBrowser('Sogou Explorer') || Browsers.isOs('BlackBerry Tablet OS') || Browsers.isOs('BlackBerry OS'),
-						'video.subtitle':					Browsers.isBrowser('Baidu Browser') || Browsers.isBrowser('Sogou Explorer'),
-						'webgl.context':					Browsers.isBrowser('Baidu Browser'),
-					}
-				],
-
-				[
-					DISABLED,
-					{
-						'elements.semantic.ping':			Browsers.isBrowser('Firefox') || Browsers.isBrowser('Firefox Mobile')
-					}
-				],
-
-				[
-					UNCONFIRMED,
-					{
-						'interaction.dragdrop':				!(  Browsers.isType('desktop') ||
-																Browsers.isType('mobile', 'tablet', 'media') && (
-																	Browsers.isBrowser('Opera') && Browsers.isEngine('Presto')
-																) ||
-																Browsers.isType('television') && (
-																	Browsers.isDevice('webOS TV')
-																)
-															),
-
-						'interaction.editing':				!(	Browsers.isType('desktop') ||
-																Browsers.isType('mobile', 'tablet', 'media') && (
-																	Browsers.isOs('iOS', '>=', '5') ||
-																	Browsers.isOs('Android', '>=', '4') ||
-																	Browsers.isOs('Windows Phone', '>=', '7.5') ||
-																	Browsers.isOs('BlackBerry') ||
-																	Browsers.isOs('BlackBerry OS') ||
-																	Browsers.isOs('BlackBerry Tablet OS') ||
-																	Browsers.isOs('Meego') ||
-																	Browsers.isOs('Tizen') ||
-																	Browsers.isEngine('Gecko') ||
-																	Browsers.isEngine('Presto') ||
-																	Browsers.isBrowser('Chrome') ||
-																	Browsers.isBrowser('Polaris', '>=', '8')
-																) ||
-																Browsers.isType('television') && (
-																	Browsers.isOs('Tizen') ||
-																	Browsers.isDevice('webOS TV') ||
-																	Browsers.isBrowser('Espial') ||
-																	Browsers.isBrowser('MachBlue XT') ||
-																	Browsers.isEngine('Presto', '>=', '2.9')
-																) ||
-																Browsers.isType('gaming') && (
-																	Browsers.isDevice('Xbox 360') ||
-																	Browsers.isDevice('Xbox One') ||
-																	Browsers.isDevice('Playstation 4')
-																)
-															)
-					}
-				]
-			];
-
 			try {
 				this.backgroundTasks = [];
 				this.backgroundIds = {};
